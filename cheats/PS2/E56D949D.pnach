@@ -1,0 +1,8 @@
+gametitle=Call of Duty 2 - Big Red One [Collector's Edition] SLUS-21318 0xE56D949D
+
+
+[60 fps]
+patch=1,EE,20407F20,extended,00000001
+
+[Disable Aim Assist]
+patch=1,EE,001742E8,word,00000000

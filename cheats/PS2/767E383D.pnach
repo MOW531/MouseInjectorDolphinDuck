@@ -1,0 +1,4 @@
+[Disable Auto-Camera]
+patch=1,EE,0029D74C,word,00000000
+patch=1,EE,002A14A0,word,00000000
+patch=1,EE,002A15CC,word,00000000
