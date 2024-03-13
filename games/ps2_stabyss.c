@@ -40,6 +40,8 @@
 #define STA_CAMX_COS3 0xB7F9E8
 #define STA_CAMX_COS4 0xB7FA00
 
+#define SHADOWTOWERABYSS_IS_PAUSED 0x201EB8
+
 static uint8_t PS2_STA_Status(void);
 static void PS2_STA_Inject(void);
 
@@ -70,6 +72,9 @@ static void PS2_STA_Inject(void)
 {
 	if(xmouse == 0 && ymouse == 0) // if mouse is idle
 		return;
+		
+	if (PS2_MEM_ReadUInt(SHADOWTOWERABYSS_IS_PAUSED) == 0x1)
+		return;
 
 	float looksensitivity = (float)sensitivity / 40.f;
 	float scale = 300.f;
@@ -87,6 +92,8 @@ static void PS2_STA_Inject(void)
 	float dy = (float)(invertpitch ? -ymouse : ymouse) * looksensitivity / scale;
 	camY -= dy;
 	camY2 -= dy;
+	
+	camY = ClampFloat(camY, -1.04719758, 0.6108651161);
 
 	while (camX > PI)
 		camX -= TAU;
@@ -103,15 +110,18 @@ static void PS2_STA_Inject(void)
 	camXSin = sin(angle) * nScale;
 	camXCos = cos(angle) * nScale;
 	
-	// PS2_MEM_WriteFloat(STA_CAMX_COS, camXCos);
-	// PS2_MEM_WriteFloat(STA_CAMX_COS2, -camXCos);
-	// PS2_MEM_WriteFloat(STA_CAMX_COS3, -camXCos);
-	// PS2_MEM_WriteFloat(STA_CAMX_COS4, camXCos);
-	// PS2_MEM_WriteFloat(STA_CAMX_SIN, camXSin);
-	// PS2_MEM_WriteFloat(STA_CAMX_SIN2, camXSin);
-	// PS2_MEM_WriteFloat(STA_CAMX_SIN3, camXSin);
-	// PS2_MEM_WriteFloat(STA_CAMX_SIN4, camXSin);
+	 PS2_MEM_WriteFloat(STA_CAMX_COS, camXCos);
+	 PS2_MEM_WriteFloat(STA_CAMX_COS2, -camXCos);
+	 PS2_MEM_WriteFloat(STA_CAMX_COS3, -camXCos);
+	 PS2_MEM_WriteFloat(STA_CAMX_COS4, camXCos);
+	 PS2_MEM_WriteFloat(STA_CAMX_SIN, camXSin);
+	 PS2_MEM_WriteFloat(STA_CAMX_SIN2, camXSin);
+	 PS2_MEM_WriteFloat(STA_CAMX_SIN3, camXSin);
+	 PS2_MEM_WriteFloat(STA_CAMX_SIN4, camXSin);
 
-	// PS2_MEM_WriteFloat(STA_CAMX, (float)camX);
-	// PS2_MEM_WriteFloat(STA_CAMX2, (float)camX);
+	 PS2_MEM_WriteFloat(STA_CAMX, (float)camX);
+	 PS2_MEM_WriteFloat(STA_CAMX2, (float)camX);
+	 
+	 PS2_MEM_WriteFloat(STA_CAMY, (float)camY);
+	 PS2_MEM_WriteFloat(STA_CAMY2, (float)camY);
 }
