@@ -25,10 +25,16 @@
 
 #define TAU 6.2831853f // 0x40C90FDB
 
-#define MOHEA_CAMY 0xAFB9C8
-#define MOHEA_CAMX 0xAFB9D0
+#define MOHEA_CAMBASEPOINTER 0x1FD7400
+#define MOHEA_FOVPOINTER 0x1FD7BB0
+
+#define MOHEA_CAMY 0x4C8
+#define MOHEA_CAMX 0x4C0
+
+#define MOHEA_FOV 0x2B8
 
 #define MOHEA_IS_PAUSED 0x4981D8
+
 
 static uint8_t PS2_MOHEA_Status(void);
 static void PS2_MOHEA_Inject(void);
@@ -44,6 +50,10 @@ static const GAMEDRIVER GAMEDRIVER_INTERFACE =
 
 const GAMEDRIVER *GAME_PS2_MOHEA = &GAMEDRIVER_INTERFACE;
 
+
+static uint32_t camBase = 0;
+static uint32_t fovBase = 0;
+
 //==========================================================================
 // Purpose: return 1 if game is detected
 //==========================================================================
@@ -57,21 +67,41 @@ static uint8_t PS2_MOHEA_Status(void)
 
 static void PS2_MOHEA_Inject(void)
 {
+	fovBase = PS2_MEM_ReadPointer(MOHEA_FOVPOINTER);
+	if (!fovBase)
+		return;
+	
+		float fov = 40.f;
+		
+	if (PS2_MEM_ReadFloat(fovBase + MOHEA_FOV) == 35.f)
+		PS2_MEM_WriteFloat(fovBase + MOHEA_FOV, fov);
+	
 	if(xmouse == 0 && ymouse == 0) // if mouse is idle
 		return;
 	if (PS2_MEM_ReadUInt(MOHEA_IS_PAUSED) == 0x1)
 		return;
 	
+	camBase = PS2_MEM_ReadPointer(MOHEA_CAMBASEPOINTER);
+	if (!camBase)
+		return;
+	fovBase = PS2_MEM_ReadPointer(MOHEA_FOVPOINTER);
+	if (!fovBase)
+		return;
+	
 	float looksensitivity = (float)sensitivity;
 	float scale = 10000.f;
 	
-	float camX = PS2_MEM_ReadFloat(MOHEA_CAMX);
-	float camY = PS2_MEM_ReadFloat(MOHEA_CAMY);
+	float camX = PS2_MEM_ReadFloat(camBase - MOHEA_CAMX);
+	float camY = PS2_MEM_ReadFloat(camBase - MOHEA_CAMY);
 	
 	camX += (float)-xmouse * looksensitivity / scale;
 	camY += (float)(invertpitch ? ymouse : -ymouse) * looksensitivity / scale;
 	camY = ClampFloat(camY, -1.483529925, 1.483529925);
+	while (camX > 6.28318529129)
+			camX -= (6.28318529129 * 2.f);
+	while (camX < -6.28318529129)
+			camX += (6.28318529129 * 2.f);
 	
-	PS2_MEM_WriteFloat(MOHEA_CAMX, camX);
-	PS2_MEM_WriteFloat(MOHEA_CAMY, camY);
+	PS2_MEM_WriteFloat(camBase - MOHEA_CAMX, camX);
+	PS2_MEM_WriteFloat(camBase - MOHEA_CAMY, camY);
 }

@@ -30,6 +30,9 @@
 
 #define BRO_IS_PAUSED 0x3936D4
 
+
+#define BRO_FOV 0x03C07E4
+
 static uint8_t PS2_CODBRO_Status(void);
 static void PS2_CODBRO_Inject(void);
 
@@ -66,6 +69,16 @@ static void PS2_CODBRO_Inject(void)
 		
 	float looksensitivity = (float)sensitivity;
 	float scale = 200.f;
+	if (PS2_MEM_ReadFloat(BRO_FOV) <= 10.f) {
+		scale = 800.f;}
+	else if (PS2_MEM_ReadFloat(BRO_FOV) <= 20.f){
+		scale = 600.f;
+	}
+	else if (PS2_MEM_ReadFloat(BRO_FOV) <= 40.f){
+		scale = 400.f;
+	}
+	else {
+		scale = 200.f;}
 		
 	float camX = PS2_MEM_ReadFloat(BRO_CAMX);
 	float camY = PS2_MEM_ReadFloat(BRO_CAMY);
@@ -73,6 +86,11 @@ static void PS2_CODBRO_Inject(void)
 	
 	camX += (float)-xmouse * looksensitivity / scale;
 	camY += (float)(invertpitch ? -ymouse : ymouse) * looksensitivity / scale;
+	camY = ClampFloat(camY, -90, 90);
+	while (camX > 180.f)
+			camX -= (180.f * 2.f);
+	while (camX < -180.f)
+			camX += (180.f * 2.f);
 	
 	PS2_MEM_WriteFloat(BRO_CAMX, camX);
 	PS2_MEM_WriteFloat(BRO_CAMY, camY);
