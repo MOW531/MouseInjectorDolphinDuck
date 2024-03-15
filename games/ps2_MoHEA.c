@@ -26,12 +26,11 @@
 #define TAU 6.2831853f // 0x40C90FDB
 
 #define MOHEA_CAMBASEPOINTER 0x1FD7400
-#define MOHEA_FOVPOINTER 0x1FD7BB0
 
 #define MOHEA_CAMY 0x4C8
 #define MOHEA_CAMX 0x4C0
 
-#define MOHEA_FOV 0x2B8
+#define MOHEA_FOV 0x498
 
 #define MOHEA_IS_PAUSED 0x4981D8
 
@@ -67,14 +66,15 @@ static uint8_t PS2_MOHEA_Status(void)
 
 static void PS2_MOHEA_Inject(void)
 {
-	fovBase = PS2_MEM_ReadPointer(MOHEA_FOVPOINTER);
-	if (!fovBase)
-		return;
+	fovBase = PS2_MEM_ReadPointer(MOHEA_CAMBASEPOINTER);
+	 if (!fovBase)
+		 return;
 	
-		float fov = 40.f;
+	 // float fov = 40.f;
 		
-	if (PS2_MEM_ReadFloat(fovBase + MOHEA_FOV) == 35.f)
-		PS2_MEM_WriteFloat(fovBase + MOHEA_FOV, fov);
+	// if (PS2_MEM_ReadFloat(fovBase - MOHEA_FOV) == 35.f) {
+		 // PS2_MEM_WriteFloat(fovBase - MOHEA_FOV, fov);
+	// }
 	
 	if(xmouse == 0 && ymouse == 0) // if mouse is idle
 		return;
@@ -84,12 +84,19 @@ static void PS2_MOHEA_Inject(void)
 	camBase = PS2_MEM_ReadPointer(MOHEA_CAMBASEPOINTER);
 	if (!camBase)
 		return;
-	fovBase = PS2_MEM_ReadPointer(MOHEA_FOVPOINTER);
-	if (!fovBase)
-		return;
 	
 	float looksensitivity = (float)sensitivity;
 	float scale = 10000.f;
+		if (PS2_MEM_ReadFloat(fovBase - MOHEA_FOV) <= 10.f) {
+		scale = 80000.f;}
+	else if (PS2_MEM_ReadFloat(fovBase - MOHEA_FOV) <= 15.f){
+		scale = 60000.f;
+	}
+	else if (PS2_MEM_ReadFloat(fovBase - MOHEA_FOV) <= 25.f){
+		scale = 20000.f;
+	}
+	else {
+		scale = 10000.f;}
 	
 	float camX = PS2_MEM_ReadFloat(camBase - MOHEA_CAMX);
 	float camY = PS2_MEM_ReadFloat(camBase - MOHEA_CAMY);
