@@ -143,7 +143,8 @@ avoid clicking off the window.
 | Armored Core 2 (USA) | SLUS-20014 | Good | <sup>Arena replays broken</br>Not fully tested</sub> | - | - |
 | Beverly Hills Cop (PAL) | SLES-54456 | Fair | <sup>Not fully tested</sub> | - | - |
 | Black (USA) | SLUS-21376 | Good | <sup>Not fully tested</sub> | - | - |
-| Call of Duty 3 (USA) | SLUS-21426 | Good | <sup>3rd-Person Jeep camera not supported</br>Not fully tested</sub> | - | - |
+| Call of Duty 3 (USA) | SLUS-21426 | Good | <sup>3rd-Person Jeep camera not supported</br>Not fully tested</sub> | - | **5E843024.pnach** |
+| Call of Duty: Big Red One - Collector's Edition (USA) | SLUS-21318 | Good | <sup>Not fully tested</sub> | - | **E56D949D.pnach** |
 | Call of Duty: Finest Hour (USA) | SLUS-20725 | Good | <sup>None</sub> | <sup>Aim Assist: Off</sub> | - |
 | Cold Winter (USA) | SLUS-20845 | Good | <sup>Split-screen mode not supported</sub> | <sup>Profile options - Aim Assist: Off</sub> | - |
 | Darkwatch (USA) | SLUS-21043 | Good | <sup>**Requires supplied cheat file**</br>Horse aiming is not quite right but is usable.</sub> | - | **327052E8.pnach** |
@@ -174,11 +175,10 @@ avoid clicking off the window.
 | TimeSplitters (v1.10, v2.00) (USA) | SLUS-20090 | Good | <sup>**Optional cheat to always show crosshair**</br>Not fully tested</sub> | <sup>Auto Lookahead: No</br>Auto Aim: Off</sub> | **B4A004F2.pnach (v1.10)</br>8966730F.pnach (v2.00)** |
 | Urban Chaos: Riot Response (USA) | SLUS-21390 | Good | <sup>Not fully tested</sub> | <sup>Auto-Center: No</sub> | - |
 | Vampire Night (USA) | SLUS-20221 | Good | <sup>Not fully tested</sub> | - | - |
-| Call of Duty: Big Red One - Collector's Edition (USA) | SLUS-21318 | Good | <sup>Not fully tested</sub> | - | **E56D949D.pnach** |
 | Tenchu: Wrath of Heaven (USA) | SLUS-20397 | Okay | <sup>Not fully tested</sub> | - | **767E383D.pnach** |
 | Shadow Tower Abyss (English Patch)  **credit to garungorp for the WIP file.** | SLPS-25217 | Good | <sup>Not fully tested</sub> | - | - |
 | The History Channel: Battle for the Pacific (USA) | SLUS-21712 | Bad | <sup>Not fully tested</sub> | - | - |
-| Medal of Honor: European Assault (USA) | SLUS-21199 | Good | <sup>Not fully tested</sub> | - | - |
+| Medal of Honor: European Assault (USA) | SLUS-21199 | Good | <sup>Not fully tested</sub> | - | **BB70FFB9.pnach** |
 * NOTE: PCSX2 will only hook with **BIOS versions 5XXXX and up**.
 * NOTE: Some aspects may break when a game is started with overclocking. Requires testing.
 * PCSX2 Settings: **Disable** *'Settings->Interface->Double-Click Toggles Fullscreen'* | **Enable** *'Settings->Interface->Hide Cursor In Fullscreen'*
