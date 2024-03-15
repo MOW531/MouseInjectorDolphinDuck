@@ -1,0 +1,2 @@
+[Disable Aim Assist]
+patch=1,EE,00222FE8,word,00000000
