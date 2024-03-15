@@ -175,9 +175,10 @@ avoid clicking off the window.
 | Urban Chaos: Riot Response (USA) | SLUS-21390 | Good | <sup>Not fully tested</sub> | <sup>Auto-Center: No</sub> | - |
 | Vampire Night (USA) | SLUS-20221 | Good | <sup>Not fully tested</sub> | - | - |
 | Call of Duty: Big Red One - Collector's Edition (USA) | SLUS-21318 | Good | <sup>Not fully tested</sub> | - | **E56D949D.pnach** |
-| Tenchu: Wrath of Heaven (USA) | SLUS-20397 | Okay | <sup>Broken. Needs per-level patches.</sub> | - | **767E383D.pnach** |
+| Tenchu: Wrath of Heaven (USA) | SLUS-20397 | Okay | <sup>Not fully tested</sub> | - | **767E383D.pnach** |
 | Shadow Tower Abyss (English Patch)  **credit to garungorp for the WIP file.** | SLPS-25217 | Good | <sup>Not fully tested</sub> | - | - |
-| The History Channel: Battle for the Pacific | SLUS-21712 | Bad | <sup>Not fully tested</sub> | - | - |
+| The History Channel: Battle for the Pacific (USA) | SLUS-21712 | Bad | <sup>Not fully tested</sub> | - | - |
+| Medal of Honor: European Assault (USA) | SLUS-21199 | Good | <sup>Not fully tested</sub> | - | - |
 * NOTE: PCSX2 will only hook with **BIOS versions 5XXXX and up**.
 * NOTE: Some aspects may break when a game is started with overclocking. Requires testing.
 * PCSX2 Settings: **Disable** *'Settings->Interface->Double-Click Toggles Fullscreen'* | **Enable** *'Settings->Interface->Hide Cursor In Fullscreen'*
