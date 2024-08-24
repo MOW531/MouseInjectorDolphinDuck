@@ -124,6 +124,8 @@ avoid clicking off the window.
 | GoldenEye: 007 (USA) | Fair | <sup>None</sub> | - | - |
 | Sin and Punishment (J) | Good | <sup>Not fully tested</sub> | - | - |
 | 007: The World Is Not Enough (USA) | Good | <sup>Requires cheat for 'Cold Reception' mission</br>(disable cheat for multiplayer, may require restart)</br>Not fully tested</sub> | <sup>Auto Aim: Off</br>Look Ahead: Off</br>Auto Level: Off</sub>| <sup>**007 - The World Is Not Enough (USA).cht**</sub> |
+| Armorines: Project S.W.A.R.M. (USA) | Bad | <sup>Not fully tested</sub> | - | - |
+| Daikatana (USA) | Good | <sup>Not fully tested</br>If you die, you need to turn off mouse look for the sequence to play out.</sub> | - | - |
 
 ## Supported SNES Titles
 | Game Title | Mouse Support | Issues |
@@ -190,6 +192,8 @@ avoid clicking off the window.
 | ---------- | ------ | :-----------: | ------ | --------------- |
 | Coded Arms (USA) | ULUS10019 | Fair | <sup>Not fully tested</sub> | <sup>Free Look->Lock On: None</sub> |
 | Ghost in the Shell: Stand Alone Complex (USA) | ULUS10020 | Fair | <sup>Not fully tested</sub> | |
+| Medal of Honor: Heroes (USA) | ULUS10141 | Good | <sup>Not fully tested</sub> | |
+| Medal of Honor: Heroes 2 (USA) | ULUS10310 | Good | <sup>Not fully tested</sub> | |
 
 # **|  FREQUENTLY ASKED QUESTIONS  |**
 ### Q: How do I install?
